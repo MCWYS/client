@@ -4,7 +4,7 @@ import { pageList } from "../App";
 import { NavLink } from "react-router-dom";
 
 const NavBarWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 30px;
   width: 70vw;
   height: 70px;

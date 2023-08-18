@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { MAIN_COLOR, TEXT_COLOR } from "../styled/main.styled";
+import { NavLink } from "react-router-dom";
 
 const TitleWrapper = styled.div`
   background-color: ${MAIN_COLOR};
-  position: relative;
+  position: fixed;
   width: 100vw;
   height: 80px;
   display: flex;
@@ -15,7 +16,9 @@ const TitleWrapper = styled.div`
 export function TitleLogo() {
   return (
     <TitleWrapper>
-      <img src="/svg/titlelogo.svg" />
+      <NavLink to="/">
+        <img src="/svg/titlelogo.svg" />
+      </NavLink>
     </TitleWrapper>
   );
 }

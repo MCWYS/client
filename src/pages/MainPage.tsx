@@ -29,8 +29,8 @@ export default function MainPage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: "100%",
-          marginTop: "30px",
+          height: "auto",
+          minHeight: "100vh",
         }}
       >
         <div style={{ display: "flex", flexDirection: "row", gap: "16px" }}>

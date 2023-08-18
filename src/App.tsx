@@ -32,8 +32,8 @@ function App() {
   return (
     <>
       <NextUIProvider>
-        <TitleLogo />
         <BrowserRouter basename="/">
+          <TitleLogo />
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/search/:keyword" element={<SearchResultPage />} />
