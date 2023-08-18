@@ -11,6 +11,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/search/:keyword" element={<SearchResultPage />} />
+            <Route path="/*" element={<MainPage />} />
           </Routes>
         </BrowserRouter>
       </NextUIProvider>
