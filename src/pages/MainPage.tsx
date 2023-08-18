@@ -39,7 +39,7 @@ export default function MainPage() {
             margin: "30px",
           }}
         >
-          {foodList.map((food, idx) => (
+          {foodList.map((food) => (
             <div
               key={food.name}
               style={{
@@ -73,7 +73,7 @@ export default function MainPage() {
             step="10"
           />
         </div>
-        <label for="cowbell">내 위치로부터 __ 분 거리까지</label>
+        <label>내 위치로부터 __ 분 거리까지</label>
       </div>
     </>
   );
