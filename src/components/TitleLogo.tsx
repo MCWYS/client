@@ -5,17 +5,17 @@ const TitleWrapper = styled.div`
   background-color: ${MAIN_COLOR};
   position: relative;
   width: 100vw;
-  height: 9vh;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${TEXT_COLOR};
 `;
 
-export const Title = () => {
+export function TitleLogo() {
   return (
     <TitleWrapper>
       <img src="/svg/titlelogo.svg" />
     </TitleWrapper>
   );
-};
+}

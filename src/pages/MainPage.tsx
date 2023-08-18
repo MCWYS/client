@@ -1,5 +1,6 @@
 import { Input } from "@nextui-org/react";
-import { Title } from "../components/TitleLogo";
+import { NavBar } from "../components/NavBar";
+import { useState } from "react";
 
 const foodList = [
   { name: "한식" },
@@ -14,9 +15,14 @@ const foodList = [
 ];
 
 export default function MainPage() {
+  const [distance, setDistance] = useState(50);
+
+  const handleDistanceChange = (e) => {
+    const newDistance = e.target.value;
+    setDistance(newDistance);
+  };
   return (
     <>
-      <Title />
       <div
         style={{
           display: "flex",
@@ -52,8 +58,8 @@ export default function MainPage() {
               <div
                 style={{
                   backgroundColor: "#D9D9D9",
-                  width: "90px",
-                  height: "90px",
+                  width: "80px",
+                  height: "80px",
                   borderRadius: "50%",
                 }}
               ></div>
@@ -69,11 +75,13 @@ export default function MainPage() {
             style={{ width: "300px" }}
             min="0"
             max="100"
-            value="50"
+            value={distance}
             step="10"
+            onChange={handleDistanceChange}
           />
         </div>
-        <label>내 위치로부터 __ 분 거리까지</label>
+        <label>내 위치로부터 {distance / 5} 분 거리까지</label>
+        <NavBar />
       </div>
     </>
   );
