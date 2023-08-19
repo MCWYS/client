@@ -27,7 +27,8 @@ export default function ShoeModal({
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       closeButton={<img src="/svg/close.png" />}
-      placement="top"
+      placement="center"
+      size="xs"
     >
       <ModalContent style={{ backgroundColor: "#27272A" }}>
         {() => (

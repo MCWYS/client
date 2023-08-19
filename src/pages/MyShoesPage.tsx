@@ -1,5 +1,8 @@
+import { useDisclosure } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import ShoeModal from "../components/ShoeModal";
+import { useState } from "react";
 
 export const MyShoesPageWrapper = styled.div`
   display: flex;
@@ -146,11 +149,11 @@ export function extractFromRes() {
     name: "JamJam",
     mileage: "2300",
     shoes: [
-      { name: "Watermelon", mps: "11", pps: "10" },
-      { name: "Slapper", mps: "3", pps: "20" },
-      { name: "Choco Cream", mps: "3", pps: "30" },
-      { name: "Reddy", mps: "3", pps: "40" },
-      { name: "Milki Way", mps: "5", pps: "50" },
+      { name: "Watermelon", mps: "11", pps: "10", price: "2000" },
+      { name: "Slapper", mps: "3", pps: "20", price: "2000" },
+      { name: "Choco Cream", mps: "3", pps: "30", price: "2000" },
+      { name: "Reddy", mps: "3", pps: "40", price: "2000" },
+      { name: "Milki Way", mps: "5", pps: "50", price: "2000" },
     ],
   };
   return res;
@@ -159,7 +162,8 @@ export function extractFromRes() {
 export function MyShoesPage() {
   const { name, mileage, shoes } = extractFromRes();
   const { totalMps, totalPps } = calculateTotalSum(shoes);
-
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [selected, setSelected] = useState(0);
   return (
     <>
       <MyShoesPageWrapper>
@@ -199,8 +203,13 @@ export function MyShoesPage() {
 
             <ShoesGridBox>
               <ShoesGrid>
-                {shoes.map((shoe) => (
-                  <ShoesBox>
+                {shoes.map((shoe, idx) => (
+                  <ShoesBox
+                    onClick={() => {
+                      onOpen();
+                      setSelected(idx);
+                    }}
+                  >
                     <ShoesImageBox>
                       <ShoesImage
                         src={`/svg/shoes/${shoe.name}.png`}
@@ -214,6 +223,16 @@ export function MyShoesPage() {
           </ShoesInventoryBox>
         </MyShoesPageBox>
       </MyShoesPageWrapper>
+      <ShoeModal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        imgUrl={`/svg/shoes/${shoes[selected].name}.png`}
+        name={shoes[selected].name}
+        mps={shoes[selected].mps}
+        pps={shoes[selected].pps}
+        price={shoes[selected].price}
+        type="Sell"
+      />
     </>
   );
 }

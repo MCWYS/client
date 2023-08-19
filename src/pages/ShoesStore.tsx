@@ -8,6 +8,9 @@ import {
   extractFromRes,
   calculateTotalSum,
 } from "./MyShoesPage";
+import { useState } from "react";
+import ShoeModal from "../components/ShoeModal";
+import { useDisclosure } from "@nextui-org/react";
 
 const StoreTitle = styled.div`
   display: flex;
@@ -81,7 +84,8 @@ export const ShoesStore = () => {
   const { name, mileage, shoes } = extractFromRes();
   const { shoesList } = extractFromShoesListRes();
   const { totalMps, totalPps } = calculateTotalSum(shoes);
-
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [selected, setSelected] = useState(0);
   return (
     <MyShoesPageWrapper>
       <MyShoesPageBox>
@@ -107,8 +111,14 @@ export const ShoesStore = () => {
         </StatusBox>
         <ShoesGridBox>
           <ShoesGrid>
-            {shoesList.map((shoes) => (
-              <ShoesBox key={shoes.name}>
+            {shoesList.map((shoes, idx) => (
+              <ShoesBox
+                key={shoes.name}
+                onClick={() => {
+                  onOpen();
+                  setSelected(idx);
+                }}
+              >
                 <ShoesImageBox>
                   <ShoesImage src={`/svg/shoes/${shoes.name}.png`}></ShoesImage>
                 </ShoesImageBox>
@@ -118,6 +128,16 @@ export const ShoesStore = () => {
           </ShoesGrid>
         </ShoesGridBox>
       </MyShoesPageBox>
+      <ShoeModal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        imgUrl={`/svg/shoes/${shoesList[selected].name}.png`}
+        name={shoesList[selected].name}
+        mps={shoesList[selected].mps}
+        pps={shoesList[selected].pps}
+        price={shoesList[selected].price}
+        type="Buy"
+      />
     </MyShoesPageWrapper>
   );
 };
