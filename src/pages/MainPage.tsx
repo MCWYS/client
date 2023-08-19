@@ -4,15 +4,15 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const foodList = [
-  { name: "한식" },
-  { name: "중식" },
-  { name: "일식" },
-  { name: "양식" },
-  { name: "인도식" },
-  { name: "미국식" },
-  { name: "커피" },
-  { name: "야식" },
-  { name: "디저트" },
+  { name: "chicken", imageUrl: "/svg/fried-chicken.png" },
+  { name: "Meat", imageUrl: "/svg/meat.png" },
+  { name: "Noodle", imageUrl: "/svg/noodles.png" },
+  { name: "Tteokbokki", imageUrl: "/svg/tteok.png" },
+  { name: "Night Meal", imageUrl: "/svg/night.png" },
+  { name: "Sandwich", imageUrl: "/svg/sandwich.png" },
+  { name: "Burger", imageUrl: "/svg/hamburger.png" },
+  { name: "Coffee", imageUrl: "/svg/coffee.png" },
+  { name: "Sushi", imageUrl: "/svg/sushi.png" },
 ];
 
 export default function MainPage() {
@@ -70,8 +70,16 @@ export default function MainPage() {
                   width: "80px",
                   height: "80px",
                   borderRadius: "50%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-              ></div>
+              >
+                <img
+                  src={food.imageUrl}
+                  style={{ width: "54px", height: "54px" }}
+                />
+              </div>
               <h2 style={{}}>{food.name}</h2>
             </div>
           ))}
