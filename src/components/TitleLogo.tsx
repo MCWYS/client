@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MAIN_COLOR, TEXT_COLOR } from "../styled/main.styled";
+import { MAIN_COLOR } from "../styled/main.styled";
 import { NavLink } from "react-router-dom";
 
 const TitleWrapper = styled.div`
@@ -10,6 +10,7 @@ const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
   padding-top: 10px;
 `;
 

@@ -2,7 +2,6 @@ import { Input } from "@nextui-org/react";
 import { NavBar } from "../components/NavBar";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { TitleLogo } from "../components/TitleLogo";
 
 const foodList = [
   { name: "한식" },
@@ -20,13 +19,12 @@ export default function MainPage() {
   const [distance, setDistance] = useState(50);
   const [keyword, setKeyword] = useState("");
 
-  const handleDistanceChange = (e) => {
-    const newDistance = e.target.value;
+  const handleDistanceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newDistance = Number(e.target.value);
     setDistance(newDistance);
   };
   return (
     <>
-      <TitleLogo />
       <div
         style={{
           display: "flex",

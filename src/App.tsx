@@ -6,6 +6,7 @@ import { RankingPage } from "./pages/RankingPage";
 import { MyProfilePage } from "./pages/MyProfilePage";
 import { NearbyPage } from "./pages/NearbyPage";
 import { StorePage } from "./pages/StorePage";
+import { TitleLogo } from "./components/TitleLogo";
 
 export const pageList = [
   {
@@ -39,6 +40,7 @@ function App() {
     <>
       <NextUIProvider>
         <BrowserRouter basename="/">
+          <TitleLogo />
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/search/:keyword" element={<SearchResultPage />} />
