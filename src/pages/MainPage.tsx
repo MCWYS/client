@@ -1,6 +1,7 @@
 import { Input } from "@nextui-org/react";
 import { NavBar } from "../components/NavBar";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const foodList = [
   { name: "한식" },
@@ -16,6 +17,7 @@ const foodList = [
 
 export default function MainPage() {
   const [distance, setDistance] = useState(50);
+  const [keyword, setKeyword] = useState("");
 
   const handleDistanceChange = (e) => {
     const newDistance = e.target.value;
@@ -34,8 +36,15 @@ export default function MainPage() {
         }}
       >
         <div style={{ display: "flex", flexDirection: "row", gap: "16px" }}>
-          <Input style={{ width: "50vw" }} placeholder="식당 검색" />
-          <img src="/svg/search-sm.svg" />
+          <Input
+            style={{ width: "50vw" }}
+            placeholder="식당 검색"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+          <NavLink to={`/search/${keyword}`}>
+            <img src="/svg/search-sm.svg" />
+          </NavLink>
         </div>
         <div
           style={{

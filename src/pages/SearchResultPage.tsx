@@ -1,41 +1,58 @@
-import { useParams, NavLink } from "react-router-dom";
-import { Button } from "@nextui-org/react";
-import { useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 export default function SearchResultPage() {
   const { keyword } = useParams();
+  const mapRef = useRef(null);
+  const { naver } = window;
 
-  const mapElement = useRef(null);
+  const [myLocation, setMyLocation] = useState({});
+
+  // 위치추적에 성공했을때 위치 값을 넣어줍니다.
+  const success = useCallback((position) => {
+    setMyLocation({
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+    });
+  }, []);
+
+  // 위치 추적에 실패 했을때 초기값을 넣어줍니다.
+  const error = useCallback(() => {
+    console.log("위치 추적 실패");
+  }, []);
 
   useEffect(() => {
-    const { naver } = window;
-    if (!mapElement.current || !naver) return;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+  }, [success, error, navigator.geolocation]);
 
-    // 지도에 표시할 위치의 위도와 경도 좌표를 파라미터로 넣어줍니다.
-    const location = new naver.maps.LatLng(37.5656, 126.9769);
-    const mapOptions: naver.maps.MapOptions = {
+  useEffect(() => {
+    if (!mapRef.current || !naver) return;
+
+    const location = new naver.maps.LatLng(
+      myLocation.latitude,
+      myLocation.longitude,
+    );
+
+    const mapOptions = {
       center: location,
       zoom: 17,
       zoomControl: true,
-      zoomControlOptions: {
-        position: naver.maps.Position.TOP_RIGHT,
-      },
     };
-    const map = new naver.maps.Map(mapElement.current, mapOptions);
+
+    const map = new naver.maps.Map(mapRef.current, mapOptions);
     new naver.maps.Marker({
       position: location,
       map,
     });
-  }, []);
+  }, [mapRef, myLocation, success, error, naver]);
 
   return (
     <>
       <h1>This is SearchResultPage.</h1>
       {keyword && <p>{keyword}</p>}
-      <NavLink to="/">
-        <Button>메인으로</Button>
-      </NavLink>
-      <div ref={mapElement} style={{ minHeight: "400px" }} />
+      <div ref={mapRef} style={{ minHeight: "400px" }} />
     </>
   );
 }

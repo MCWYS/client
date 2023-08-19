@@ -21,6 +21,7 @@ export function NavBar() {
       {pageList.map((item, idx) => (
         <NavLink
           to={`${item.path}`}
+          key={idx}
           style={{
             display: "flex",
             flexDirection: "column",
