@@ -8,6 +8,7 @@ import { NearbyPage } from "./pages/NearbyPage";
 import { StorePage } from "./pages/StorePage";
 import { TitleLogo } from "./components/TitleLogo";
 import { MyShoesPage } from "./pages/MyShoesPage";
+import OrderCheckPage from "./pages/OrderCheckPage";
 
 export const pageList = [
   {
@@ -32,6 +33,12 @@ export const pageList = [
     name: "식당",
     path: "store",
     components: <StorePage />,
+    src: "",
+  },
+  {
+    name: "결제 확인",
+    path: "orderCheck",
+    components: <OrderCheckPage />,
     src: "",
   },
 ];
