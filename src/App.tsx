@@ -15,19 +15,19 @@ import detectEthereumProvider from "@metamask/detect-provider";
 
 export const pageList = [
   {
-    name: "주변 식당",
+    name: "Nearby",
     path: "nearby",
     components: <NearbyPage />,
     src: "/svg/map-01.png",
   },
   {
-    name: "리더보드",
+    name: "Leaderboard",
     path: "leaderboard",
     components: <LeaderboardPage />,
     src: "/svg/trophy-01.png",
   },
   {
-    name: "프로필",
+    name: "Profile",
     path: "myprofile",
     components: <MyProfilePage />,
     src: "/svg/user-square.png",

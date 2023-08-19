@@ -97,7 +97,7 @@ export default function MainPage() {
             onChange={handleDistanceChange}
           />
         </div>
-        <label>내 위치로부터 {distance / 5} 분 거리까지</label>
+        <label>{distance / 5} minutes from your location</label>
         <NavBar />
       </div>
     </>

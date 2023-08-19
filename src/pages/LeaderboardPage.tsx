@@ -42,7 +42,11 @@ export function LeaderboardPage() {
                 <p>
                   In each every monday, you will get a reward based on rank.
                 </p>
-                <p>1st to 30th place: 3 discount coupons for 3,000 won</p>
+                <ul>
+                  <li>1st ~ 40th place: 4,000 discount x 3</li>
+                  <li>41st ~ 70th place: 3,000 discount x 3</li>
+                  <li>71st ~ 100th place: 2,000 discount x 3</li>
+                </ul>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onClick={onClose}>

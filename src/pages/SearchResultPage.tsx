@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function getRandomCoordinate(offset: number) {
   // 랜덤한 값은 -offset에서 offset 사이의 값입니다.
@@ -109,6 +110,9 @@ export default function SearchResultPage() {
   return (
     <div>
       <div ref={mapRef} style={{ minHeight: "400px", marginTop: "90px" }} />
+      <Link to="/">
+        <img src="/footerMap.png" alt="footerMap" />
+      </Link>
     </div>
   );
 }
