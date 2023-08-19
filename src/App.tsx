@@ -44,6 +44,12 @@ export const pageList = [
     components: <OrderCheckPage />,
     src: "",
   },
+  {
+    name: "My Shoes Inventory",
+    path: "myshoes",
+    components: <MyShoesPage />,
+    src: "",
+  },
 ];
 
 let injectedProvider = false;

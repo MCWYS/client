@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 export function MyProfilePage() {
   return (
     <>
-      <img src="/프로필 조회 화면.png" />
       <NavLink to="/myshoes">
+        <img src="/프로필 조회 화면.png" />
         <div
           style={{
             position: "fixed",
