@@ -8,6 +8,7 @@ import { NearbyPage } from "./pages/NearbyPage";
 import { StorePage } from "./pages/StorePage";
 import { TitleLogo } from "./components/TitleLogo";
 import { MyShoesPage } from "./pages/MyShoesPage";
+import { ShoesStore } from "./pages/ShoesStore";
 import OrderCheckPage from "./pages/OrderCheckPage";
 import { useState, useEffect } from "react";
 import { formatBalance, formatChainAsNum } from "./utils";
@@ -53,7 +54,7 @@ export const pageList = [
   {
     name: "NFT Shoes Store",
     path: "shoesStore",
-    components: <MyShoesPage />,
+    components: <ShoesStore />,
     src: "",
   },
 ];

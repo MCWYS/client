@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const MyShoesPageWrapper = styled.div`
+export const MyShoesPageWrapper = styled.div`
   display: flex;
   background-color: #27272a;
   width: 100vw;
@@ -11,7 +11,7 @@ const MyShoesPageWrapper = styled.div`
   align-items: center;
 `;
 
-const MyShoesPageBox = styled.div`
+export const MyShoesPageBox = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #3f3f46;
@@ -42,14 +42,14 @@ const EquipShoesImage = styled.img`
   padding: 10px;
 `;
 
-const StatusBox = styled.div`
+export const StatusBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-grow: 0;
 `;
 
-const Status = styled.div`
+export const Status = styled.div`
   display: flex;
   flex-direction: column;
   width: 82vw;
@@ -62,7 +62,7 @@ const Status = styled.div`
   padding: 20px;
 `;
 
-const StatusRow = styled.div`
+export const StatusRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -123,7 +123,7 @@ const ShoesImage = styled.img`
   padding: 10px;
 `;
 
-function calculateTotalSums(shoes) {
+export function calculateTotalSum(shoes) {
   let totalMps = 0;
   let totalPps = 0;
 
@@ -138,20 +138,24 @@ function calculateTotalSums(shoes) {
   };
 }
 
-export function MyShoesPage() {
+export function extractFromRes() {
   const res = {
     name: "JamJam",
     mileage: "2300",
     shoes: [
       { name: "Watermelon", mps: "11", pps: "10" },
       { name: "Slapper", mps: "3", pps: "20" },
-      { name: "Choco Cream", mps: "3", pps: "20" },
-      { name: "Reddy", mps: "0.003", pps: "0.004" },
-      { name: "Milki Way", mps: "0.005", pps: "0.003" },
+      { name: "Choco Cream", mps: "3", pps: "30" },
+      { name: "Reddy", mps: "3", pps: "40" },
+      { name: "Milki Way", mps: "5", pps: "50" },
     ],
   };
-  const { name, mileage, shoes } = res;
-  const { totalMps, totalPps } = calculateTotalSums(shoes);
+  return res;
+}
+
+export function MyShoesPage() {
+  const { name, mileage, shoes } = extractFromRes();
+  const { totalMps, totalPps } = calculateTotalSum(shoes);
 
   return (
     <>
