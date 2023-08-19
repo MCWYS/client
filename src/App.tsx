@@ -50,6 +50,12 @@ export const pageList = [
     components: <MyShoesPage />,
     src: "",
   },
+  {
+    name: "NFT Shoes Store",
+    path: "shoesStore",
+    components: <MyShoesPage />,
+    src: "",
+  },
 ];
 
 let injectedProvider = false;
@@ -103,13 +109,15 @@ function App() {
     const switchToHardhatNetwork = async () => {
       try {
         await window.ethereum.request({
-          method: 'wallet_addEthereumChain',
-          params: [{
-            chainId: '0x7A69',  // 31337 in hexadecimal for Hardhat Network
-            chainName: 'Hardhat Network',
-            nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
-            rpcUrls: ['http://127.0.0.1:8545'],
-          }],
+          method: "wallet_addEthereumChain",
+          params: [
+            {
+              chainId: "0x7A69", // 31337 in hexadecimal for Hardhat Network
+              chainName: "Hardhat Network",
+              nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 },
+              rpcUrls: ["http://127.0.0.1:8545"],
+            },
+          ],
         });
       } catch (addError: any) {
         console.error("Error switching to Hardhat Network:", addError.message);
@@ -119,7 +127,6 @@ function App() {
     };
 
     switchToHardhatNetwork();
-
 
     return () => {
       window.ethereum?.removeListener("accountsChanged", refreshAccounts);
@@ -179,7 +186,11 @@ function App() {
       </NextUIProvider>
       <div>Injected Provider {hasProvider ? "DOES" : "DOES NOT"} Exist</div>
       {window.ethereum?.isMetaMask && wallet.accounts.length < 1 && (
-        <button style={{"border": "3px solid red"}} disabled={disableConnect} onClick={handleConnect}>
+        <button
+          style={{ border: "3px solid red" }}
+          disabled={disableConnect}
+          onClick={handleConnect}
+        >
           Connect MetaMask
         </button>
       )}
