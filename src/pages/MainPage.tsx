@@ -35,10 +35,17 @@ export default function MainPage() {
           minHeight: "100vh",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "row", gap: "16px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "16px",
+            zIndex: -1,
+          }}
+        >
           <Input
             style={{ width: "50vw" }}
-            placeholder="식당 검색"
+            placeholder="search restaurant"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
           />

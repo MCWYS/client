@@ -8,7 +8,7 @@ import { NearbyPage } from "./pages/NearbyPage";
 import { StorePage } from "./pages/StorePage";
 import { TitleLogo } from "./components/TitleLogo";
 import { MyShoesPage } from "./pages/MyShoesPage";
-import OrderCheckPage from "./pages/OrderCheckPage";
+import { OrderCheckPage } from "./pages/OrderCheckPage";
 import { useState, useEffect } from "react";
 import { formatBalance, formatChainAsNum } from "./utils";
 import detectEthereumProvider from "@metamask/detect-provider";
@@ -103,13 +103,15 @@ function App() {
     const switchToHardhatNetwork = async () => {
       try {
         await window.ethereum.request({
-          method: 'wallet_addEthereumChain',
-          params: [{
-            chainId: '0x7A69',  // 31337 in hexadecimal for Hardhat Network
-            chainName: 'Hardhat Network',
-            nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
-            rpcUrls: ['http://127.0.0.1:8545'],
-          }],
+          method: "wallet_addEthereumChain",
+          params: [
+            {
+              chainId: "0x7A69", // 31337 in hexadecimal for Hardhat Network
+              chainName: "Hardhat Network",
+              nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 },
+              rpcUrls: ["http://127.0.0.1:8545"],
+            },
+          ],
         });
       } catch (addError: any) {
         console.error("Error switching to Hardhat Network:", addError.message);
@@ -120,7 +122,6 @@ function App() {
 
     switchToHardhatNetwork();
 
-
     return () => {
       window.ethereum?.removeListener("accountsChanged", refreshAccounts);
       window.ethereum?.removeListener("chainChanged", refreshChain);
@@ -128,6 +129,7 @@ function App() {
   }, []);
 
   const updateWallet = async (accounts: any) => {
+    console.log(accounts);
     const balance = formatBalance(
       await window.ethereum!.request({
         method: "eth_getBalance",
@@ -158,6 +160,7 @@ function App() {
   };
 
   const disableConnect = Boolean(wallet) && isConnecting;
+
   return (
     <>
       <NextUIProvider>
@@ -179,7 +182,11 @@ function App() {
       </NextUIProvider>
       <div>Injected Provider {hasProvider ? "DOES" : "DOES NOT"} Exist</div>
       {window.ethereum?.isMetaMask && wallet.accounts.length < 1 && (
-        <button style={{"border": "3px solid red"}} disabled={disableConnect} onClick={handleConnect}>
+        <button
+          style={{ border: "3px solid red" }}
+          disabled={disableConnect}
+          onClick={handleConnect}
+        >
           Connect MetaMask
         </button>
       )}
