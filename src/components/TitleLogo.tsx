@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MAIN_COLOR } from "../styled/main.styled";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const TitleWrapper = styled.div`
   background-color: ${MAIN_COLOR};
@@ -8,6 +8,7 @@ const TitleWrapper = styled.div`
   width: 100vw;
   height: 90px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   top: 0;
@@ -16,8 +17,15 @@ const TitleWrapper = styled.div`
 `;
 
 export function TitleLogo() {
+  const navigate = useNavigate();
+
   return (
     <TitleWrapper>
+      <img
+        src="/svg/chevron-left.svg"
+        onClick={() => navigate(-1)}
+        style={{ position: "absolute", left: "24px", width: "40px" }}
+      />
       <NavLink to="/">
         <img src="/svg/titlelogo.svg" />
       </NavLink>
