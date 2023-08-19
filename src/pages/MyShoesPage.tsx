@@ -205,6 +205,7 @@ export function MyShoesPage() {
               <ShoesGrid>
                 {shoes.map((shoe, idx) => (
                   <ShoesBox
+                    key={shoe.name}
                     onClick={() => {
                       onOpen();
                       setSelected(idx);
