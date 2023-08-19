@@ -88,20 +88,23 @@ const ShoesShopLinkerText = styled.p`
   margin-right: 10px;
 `;
 
-const ShoesInventory = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  width: 80%;
-`;
-
-const ShoesRow = styled.div`
+const ShoesGridBox = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+`;
+
+const ShoesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  width: 300px;
+  height: 300px;
   color: #ffffff;
   font-size: 14px;
-  justify-content: space-between;
 `;
 
 const ShoesBox = styled.div`
@@ -194,47 +197,20 @@ export function MyShoesPage() {
               </ShoesShopLinker>
             </Link>
 
-            <ShoesInventory>
-              <ShoesRow>
-                <ShoesBox>
-                  <ShoesImageBox>
-                    <ShoesImage
-                      src={`/svg/shoes/${shoes[1].name}.png`}
-                    ></ShoesImage>
-                  </ShoesImageBox>
-                  <p>{shoes[1].name}</p>
-                </ShoesBox>
-
-                <ShoesBox>
-                  <ShoesImageBox>
-                    <ShoesImage
-                      src={`/svg/shoes/${shoes[2].name}.png`}
-                    ></ShoesImage>
-                  </ShoesImageBox>
-                  <p>{shoes[2].name}</p>
-                </ShoesBox>
-
-                <ShoesBox>
-                  <ShoesImageBox>
-                    <ShoesImage
-                      src={`/svg/shoes/${shoes[3].name}.png`}
-                    ></ShoesImage>
-                  </ShoesImageBox>
-                  <p>{shoes[3].name}</p>
-                </ShoesBox>
-              </ShoesRow>
-
-              <ShoesRow>
-                <ShoesBox>
-                  <ShoesImageBox>
-                    <ShoesImage
-                      src={`/svg/shoes/${shoes[4].name}.png`}
-                    ></ShoesImage>
-                  </ShoesImageBox>
-                  <p>{shoes[4].name}</p>
-                </ShoesBox>
-              </ShoesRow>
-            </ShoesInventory>
+            <ShoesGridBox>
+              <ShoesGrid>
+                {shoes.map((shoe) => (
+                  <ShoesBox>
+                    <ShoesImageBox>
+                      <ShoesImage
+                        src={`/svg/shoes/${shoe.name}.png`}
+                      ></ShoesImage>
+                    </ShoesImageBox>
+                    <p>{shoe.name}</p>
+                  </ShoesBox>
+                ))}
+              </ShoesGrid>
+            </ShoesGridBox>
           </ShoesInventoryBox>
         </MyShoesPageBox>
       </MyShoesPageWrapper>
