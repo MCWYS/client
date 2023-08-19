@@ -6,11 +6,11 @@ const TitleWrapper = styled.div`
   background-color: ${MAIN_COLOR};
   position: fixed;
   width: 100vw;
-  height: 80px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${TEXT_COLOR};
+  padding-top: 10px;
 `;
 
 export function TitleLogo() {

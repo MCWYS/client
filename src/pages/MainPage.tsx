@@ -2,6 +2,7 @@ import { Input } from "@nextui-org/react";
 import { NavBar } from "../components/NavBar";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { TitleLogo } from "../components/TitleLogo";
 
 const foodList = [
   { name: "한식" },
@@ -25,6 +26,7 @@ export default function MainPage() {
   };
   return (
     <>
+      <TitleLogo />
       <div
         style={{
           display: "flex",

@@ -5,7 +5,7 @@ import SearchResultPage from "./pages/SearchResultPage";
 import { RankingPage } from "./pages/RankingPage";
 import { MyProfilePage } from "./pages/MyProfilePage";
 import { NearbyPage } from "./pages/NearbyPage";
-import { TitleLogo } from "./components/TitleLogo";
+import { StorePage } from "./pages/StorePage";
 
 export const pageList = [
   {
@@ -26,6 +26,12 @@ export const pageList = [
     components: <MyProfilePage />,
     src: "/svg/user-square.png",
   },
+  {
+    name: "식당",
+    path: "store",
+    components: <StorePage />,
+    src: "",
+  },
 ];
 
 function App() {
@@ -33,7 +39,6 @@ function App() {
     <>
       <NextUIProvider>
         <BrowserRouter basename="/">
-          <TitleLogo />
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/search/:keyword" element={<SearchResultPage />} />

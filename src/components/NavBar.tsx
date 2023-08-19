@@ -18,7 +18,7 @@ const NavBarWrapper = styled.div`
 export function NavBar() {
   return (
     <NavBarWrapper>
-      {pageList.map((item, idx) => (
+      {pageList.slice(0, 3).map((item, idx) => (
         <NavLink
           to={`${item.path}`}
           key={idx}
