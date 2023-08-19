@@ -1,56 +1,61 @@
 import styled from "styled-components";
-import { LeaderboardItem } from "../components/LeaderboardItem";
-import { UserType } from "../type/user";
-
-const LeaderboardWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 12px;
-  border: 3px solid #d9d9d9;
-  height: 75vh;
-  width: 90vw;
-`;
-
-const userList: UserType[] = [
-  { name: "홍길동", score: 100, src: "/default_profile.jpg" },
-  { name: "이순신", score: 90, src: "/default_profile.jpg" },
-  { name: "강감찬", score: 80, src: "/default_profile.jpg" },
-  { name: "이진재", score: 70, src: "/default_profile.jpg" },
-  { name: "조승현", score: 60, src: "/default_profile.jpg" },
-  { name: "이휘찬", score: 50, src: "/default_profile.jpg" },
-  { name: "강감찬", score: 40, src: "/default_profile.jpg" },
-  { name: "유관순", score: 30, src: "/default_profile.jpg" },
-  { name: "김민석", score: 20, src: "/default_profile.jpg" },
-  { name: "이순신", score: 10, src: "/default_profile.jpg" },
-];
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
 
 export function LeaderboardPage() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <div
       style={{
-        marginTop: "90px",
         display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        marginTop: "90px",
       }}
     >
-      <LeaderboardWrapper>
-        {userList.slice(0, 10).map((user, idx) => (
-          <LeaderboardItem key={idx} rank={idx + 1} user={user} />
-        ))}
-      </LeaderboardWrapper>
-      <div
+      <img src="/리더보드.png" style={{ height: "755px" }} />
+      <button
+        onClick={onOpen}
         style={{
-          position: "fixed",
-          bottom: "0px",
+          position: "absolute",
+          top: "14px",
+          left: "calc(50% + 117px)",
         }}
       >
-        <LeaderboardItem
-          rank={100}
-          user={{ name: "AAA", score: 100, src: "/default_profile.jpg" }}
-        />
-      </div>
+        <img src="/svg/button.png" />
+      </button>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="center">
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                How it benefit me?
+              </ModalHeader>
+              <ModalBody>
+                <p>
+                  In each every monday, you will get a reward based on rank.
+                </p>
+                <p>1st to 30th place: 3 discount coupons for 3,000 won</p>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onClick={onClose}>
+                  Close
+                </Button>
+                <Button color="primary" onPress={onClose}>
+                  Okay
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
