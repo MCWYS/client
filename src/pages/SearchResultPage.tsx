@@ -5,13 +5,12 @@ function getRandomCoordinate(offset: number) {
   // 랜덤한 값은 -offset에서 offset 사이의 값입니다.
   return (Math.random() - 0.5) * 2 * offset;
 }
-
+const { naver } = window;
 const numberOfMarkers = 10;
-let map: naver.maps.Map | null = null;
+let map: any = null;
 
 export default function SearchResultPage() {
   const mapRef = useRef(null);
-  const { naver } = window;
 
   const [myLocation, setMyLocation] = useState({
     latitude: 35.17020285491475,
@@ -43,7 +42,7 @@ export default function SearchResultPage() {
         ) {
           const paths: number[][] = response.data.route.traoptimal[0].path;
 
-          const polylinePath: naver.maps.LatLng[] = [];
+          const polylinePath: any[] = [];
           paths.forEach((path) => {
             polylinePath.push(new naver.maps.LatLng(path[1], path[0]));
           });
