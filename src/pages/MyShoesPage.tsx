@@ -777,7 +777,6 @@ export function calculateTotalSum(shoes) {
     totalPps += parseFloat(shoe.pps);
   }
 
-
   console.log(shoes);
 
   return {

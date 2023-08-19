@@ -86,6 +86,9 @@ export const ShoesStore = () => {
   const { totalMps, totalPps } = calculateTotalSum(shoes);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selected, setSelected] = useState(0);
+
+  const [selectedShoesName, setSelectedShoesName] = useState("");
+
   return (
     <MyShoesPageWrapper>
       <MyShoesPageBox>
@@ -117,6 +120,7 @@ export const ShoesStore = () => {
                 onClick={() => {
                   onOpen();
                   setSelected(idx);
+                  setSelectedShoesName(shoes.name);
                 }}
               >
                 <ShoesImageBox>
