@@ -27,7 +27,7 @@ export function TitleLogo() {
         style={{ position: "absolute", left: "24px", width: "40px" }}
       />
       <NavLink to="/">
-        <img src="/svg/titlelogo.svg" />
+        <img src="/svg/newTitleLogo.svg" />
       </NavLink>
     </TitleWrapper>
   );
