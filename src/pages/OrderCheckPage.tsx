@@ -1,7 +1,7 @@
 import { RadioGroup, Radio } from "@nextui-org/react";
 import { NavLink } from "react-router-dom";
 
-export function OrderCheckPage() {
+export default function OrderCheckPage() {
   return (
     <div
       style={{

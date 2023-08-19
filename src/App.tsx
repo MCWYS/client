@@ -8,7 +8,8 @@ import { NearbyPage } from "./pages/NearbyPage";
 import { StorePage } from "./pages/StorePage";
 import { TitleLogo } from "./components/TitleLogo";
 import { MyShoesPage } from "./pages/MyShoesPage";
-import { OrderCheckPage } from "./pages/OrderCheckPage";
+import { ShoesStore } from "./pages/ShoesStore";
+import OrderCheckPage from "./pages/OrderCheckPage";
 import { useState, useEffect } from "react";
 import { formatBalance, formatChainAsNum } from "./utils";
 import detectEthereumProvider from "@metamask/detect-provider";
@@ -48,6 +49,12 @@ export const pageList = [
     name: "My Shoes Inventory",
     path: "myshoes",
     components: <MyShoesPage />,
+    src: "",
+  },
+  {
+    name: "NFT Shoes Store",
+    path: "shoesStore",
+    components: <ShoesStore />,
     src: "",
   },
 ];
