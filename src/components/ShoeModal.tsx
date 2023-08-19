@@ -672,7 +672,7 @@ export default function ShoeModal({
     const nft = new ethers.Contract(ShoesNFTAddress, ShoesNFTABI, signer);
 
     try {
-      nft.mint(
+      await nft.mint(
         "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
         name,
         price,
@@ -686,8 +686,7 @@ export default function ShoeModal({
   };
 
   const handleNFTMint = async () => {
-    await nftMint();
-    navigate("/myshoes");
+    await nftMint().then(() => navigate("/myshoes"));
   };
 
   return (
