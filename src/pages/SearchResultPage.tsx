@@ -37,6 +37,7 @@ export default function SearchResultPage() {
       })
       .then((response) => {
         if (
+          typeof naver !== "undefined" &&
           "maps" in naver &&
           map !== null &&
           response.data.route.traoptimal !== undefined
