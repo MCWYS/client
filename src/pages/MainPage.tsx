@@ -40,7 +40,6 @@ export default function MainPage() {
             display: "flex",
             flexDirection: "row",
             gap: "16px",
-            zIndex: -1,
           }}
         >
           <Input
@@ -50,7 +49,7 @@ export default function MainPage() {
             onChange={(e) => setKeyword(e.target.value)}
           />
           <NavLink to={`/search/${keyword}`}>
-            <img src="/svg/search-sm.svg" />
+            <img src="/svg/search-sm.svg" style={{ margin: "5px" }} />
           </NavLink>
         </div>
         <div

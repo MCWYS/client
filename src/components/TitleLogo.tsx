@@ -12,6 +12,7 @@ const TitleWrapper = styled.div`
   justify-content: center;
   top: 0;
   padding-top: 10px;
+  z-index: 1000;
 `;
 
 export function TitleLogo() {
