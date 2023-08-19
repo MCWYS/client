@@ -36,7 +36,11 @@ export default function SearchResultPage() {
         },
       })
       .then((response) => {
-        if ("maps" in naver && map !== null) {
+        if (
+          "maps" in naver &&
+          map !== null &&
+          response.data.route.traoptimal !== undefined
+        ) {
           const paths: number[][] = response.data.route.traoptimal[0].path;
 
           const polylinePath: naver.maps.LatLng[] = [];

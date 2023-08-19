@@ -16,9 +16,11 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "typeRoots": ["global"]
   },
   "includes": ["src", "**/*.tsx", "**/*.ts", "**/*.js", "next-env.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

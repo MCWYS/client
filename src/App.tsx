@@ -2,11 +2,12 @@ import { NextUIProvider } from "@nextui-org/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import SearchResultPage from "./pages/SearchResultPage";
-import { RankingPage } from "./pages/RankingPage";
+import { LeaderboardPage } from "./pages/LeaderboardPage";
 import { MyProfilePage } from "./pages/MyProfilePage";
 import { NearbyPage } from "./pages/NearbyPage";
 import { StorePage } from "./pages/StorePage";
 import { TitleLogo } from "./components/TitleLogo";
+import { MyShoesPage } from "./pages/MyShoesPage";
 
 export const pageList = [
   {
@@ -16,9 +17,9 @@ export const pageList = [
     src: "/svg/map-01.png",
   },
   {
-    name: "랭킹",
-    path: "ranking",
-    components: <RankingPage />,
+    name: "리더보드",
+    path: "leaderboard",
+    components: <LeaderboardPage />,
     src: "/svg/trophy-01.png",
   },
   {
@@ -44,6 +45,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/search/:keyword" element={<SearchResultPage />} />
+            <Route path="/myshoes" element={<MyShoesPage />} />
             {pageList.map((item, idx) => (
               <Route
                 path={`/${item.path}`}

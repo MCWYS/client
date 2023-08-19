@@ -69,7 +69,7 @@ export default function MainPage() {
                   backgroundColor: "#D9D9D9",
                   width: "80px",
                   height: "80px",
-                  borderRadius: "50%",
+                  borderRadius: "14px",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
