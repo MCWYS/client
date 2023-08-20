@@ -48,15 +48,17 @@ export default function ShoeModal({
   const handleNFTMint = async () => {
     await nftMint().then(() => {
       myData.mileage = myData.mileage - shoe.price;
-      setMyCoin((state) => {
-        console.log(state.mileage, shoe);
-        console.log(state.mileage - shoe.price);
-        return {
-          name: state.name,
-          mileage: state.mileage - shoe.price,
-          shoes: [...state.shoes, shoe],
-        };
-      });
+      if (setMyCoin !== undefined) {
+        setMyCoin((state) => {
+          console.log(state.mileage, shoe);
+          console.log(state.mileage - shoe.price);
+          return {
+            name: state.name,
+            mileage: state.mileage - shoe.price,
+            shoes: [...state.shoes, shoe],
+          };
+        });
+      }
       navigate("/myshoes");
     });
   };
