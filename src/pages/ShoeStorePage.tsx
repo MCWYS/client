@@ -5,12 +5,12 @@ import {
   StatusBox,
   Status,
   StatusRow,
-  extractFromRes,
   calculateTotalSum,
 } from "./MyShoesPage";
 import { useState } from "react";
 import ShoeModal from "../components/ShoeModal";
 import { useDisclosure } from "@nextui-org/react";
+import { myData } from "../App";
 
 const StoreTitle = styled.div`
   display: flex;
@@ -63,27 +63,21 @@ const ShoesImage = styled.img`
   padding: 10px;
 `;
 
-export function extractFromShoesListRes() {
-  const res = {
-    shoesList: [
-      { name: "Rainbooster", mps: "11", pps: "10", price: "1100" },
-      { name: "Cherry", mps: "11", pps: "10", price: "1100" },
-      { name: "Green Day", mps: "11", pps: "10", price: "1100" },
-      { name: "Night Hunter", mps: "11", pps: "10", price: "1100" },
-      { name: "Froggy", mps: "11", pps: "10", price: "1100" },
-      { name: "Worker", mps: "11", pps: "10", price: "1100" },
-      { name: "Mustard", mps: "11", pps: "10", price: "1100" },
-      { name: "Beamer", mps: "11", pps: "10", price: "1100" },
-      { name: "Soda", mps: "11", pps: "10", price: "1100" },
-    ],
-  };
-  return res;
-}
+const marketData = [
+  { name: "Rainbooster", mps: 11, pps: 10, price: 1100 },
+  { name: "Cherry", mps: 11, pps: 10, price: 1100 },
+  { name: "Green Day", mps: 11, pps: 10, price: 1100 },
+  { name: "Night Hunter", mps: 11, pps: 10, price: 1100 },
+  { name: "Froggy", mps: 11, pps: 10, price: 1100 },
+  { name: "Worker", mps: 11, pps: 10, price: 1100 },
+  { name: "Mustard", mps: 11, pps: 10, price: 1100 },
+  { name: "Beamer", mps: 11, pps: 10, price: 1100 },
+  { name: "Soda", mps: 11, pps: 10, price: 1100 },
+];
 
-export const ShoesStore = () => {
-  const { name, mileage, shoes } = extractFromRes();
-  const { shoesList } = extractFromShoesListRes();
-  const { totalMps, totalPps } = calculateTotalSum(shoes);
+export function ShoeStorePage() {
+  const [myCoin, setMyCoin] = useState(myData);
+  const { totalMps, totalPps } = calculateTotalSum(myCoin.shoes);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selected, setSelected] = useState(0);
 
@@ -94,13 +88,13 @@ export const ShoesStore = () => {
       <MyShoesPageBox>
         <StoreTitle>
           <img src="/svg/coin.png"></img>
-          <StoreTitleText>Shoes Store</StoreTitleText>
+          <StoreTitleText>Shoe Store</StoreTitleText>
         </StoreTitle>
         <StatusBox>
           <Status>
             <StatusRow>
-              <p>Current Mileage</p>
-              <p>{mileage}</p>
+              <p>My Current Mileage</p>
+              <p>{myCoin.mileage}</p>
             </StatusRow>
             <StatusRow>
               <p>Mileage per Step</p>
@@ -114,19 +108,19 @@ export const ShoesStore = () => {
         </StatusBox>
         <ShoesGridBox>
           <ShoesGrid>
-            {shoesList.map((shoes, idx) => (
+            {marketData.map((shoe, idx) => (
               <ShoesBox
-                key={shoes.name}
+                key={`${shoe.name}-${idx}`}
                 onClick={() => {
                   onOpen();
                   setSelected(idx);
-                  setSelectedShoesName(shoes.name);
+                  setSelectedShoesName(shoe.name);
                 }}
               >
                 <ShoesImageBox>
-                  <ShoesImage src={`/svg/shoes/${shoes.name}.png`}></ShoesImage>
+                  <ShoesImage src={`/svg/shoes/${shoe.name}.png`}></ShoesImage>
                 </ShoesImageBox>
-                <p>{shoes.name}</p>
+                <p>{shoe.name}</p>
               </ShoesBox>
             ))}
           </ShoesGrid>
@@ -135,13 +129,11 @@ export const ShoesStore = () => {
       <ShoeModal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        imgUrl={`/svg/shoes/${shoesList[selected].name}.png`}
-        name={shoesList[selected].name}
-        mps={shoesList[selected].mps}
-        pps={shoesList[selected].pps}
-        price={shoesList[selected].price}
+        imgUrl={`/svg/shoes/${marketData[selected].name}.png`}
+        shoe={marketData[selected]}
+        setMyCoin={setMyCoin}
         type="Buy"
       />
     </MyShoesPageWrapper>
   );
-};
+}

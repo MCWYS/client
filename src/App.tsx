@@ -8,10 +8,10 @@ import { NearbyPage } from "./pages/NearbyPage";
 import { StorePage } from "./pages/StorePage";
 import { TitleLogo } from "./components/TitleLogo";
 import { MyShoesPage } from "./pages/MyShoesPage";
-import { ShoesStore } from "./pages/ShoesStore";
+import { ShoeStorePage } from "./pages/ShoeStorePage";
 import OrderCheckPage from "./pages/OrderCheckPage";
 import { useState, useEffect } from "react";
-import { formatBalance, formatChainAsNum } from "./utils";
+import { formatBalance } from "./utils";
 import detectEthereumProvider from "@metamask/detect-provider";
 
 export const pageList = [
@@ -41,7 +41,7 @@ export const pageList = [
   },
   {
     name: "결제 확인",
-    path: "orderCheck",
+    path: "order_check",
     components: <OrderCheckPage />,
     src: "",
   },
@@ -53,8 +53,8 @@ export const pageList = [
   },
   {
     name: "NFT Shoes Store",
-    path: "shoesStore",
-    components: <ShoesStore />,
+    path: "shoe_store",
+    components: <ShoeStorePage />,
     src: "",
   },
 ];
@@ -67,6 +67,12 @@ if (typeof window.ethereum !== "undefined") {
 }
 
 const isMetaMask = injectedProvider ? window.ethereum.isMetaMask : false;
+
+export const myData = {
+  name: "Jam Jam",
+  mileage: 10000,
+  shoes: [{ name: "Watermelon", mps: 11, pps: 10, price: 2000 }],
+};
 
 function App() {
   const [hasProvider, setHasProvider] = useState<boolean | null>(null);
@@ -176,7 +182,6 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/search/:keyword" element={<SearchResultPage />} />
-            <Route path="/myshoes" element={<MyShoesPage />} />
             {pageList.map((item, idx) => (
               <Route
                 path={`/${item.path}`}
@@ -187,30 +192,6 @@ function App() {
           </Routes>
         </BrowserRouter>
       </NextUIProvider>
-      <div>Injected Provider {hasProvider ? "DOES" : "DOES NOT"} Exist</div>
-      {window.ethereum?.isMetaMask && wallet.accounts.length < 1 && (
-        <button
-          style={{ border: "3px solid red" }}
-          disabled={disableConnect}
-          onClick={handleConnect}
-        >
-          Connect MetaMask
-        </button>
-      )}
-
-      {wallet.accounts.length > 0 && (
-        <>
-          <div>Wallet Accounts: {wallet.accounts[0]}</div>
-          <div>Wallet Balance: {wallet.balance}</div>
-          <div>Hex ChainId: {wallet.chainId}</div>
-          <div>Numeric ChainId: {formatChainAsNum(wallet.chainId)}</div>
-        </>
-      )}
-      {error && (
-        <div onClick={() => setError(false)}>
-          <strong>Error:</strong> {errorMessage}
-        </div>
-      )}
     </>
   );
 }
