@@ -53,7 +53,7 @@ export default function OrderCheckPage() {
         </Radio>
       </RadioGroup>
       <NavLink
-        to="/search/123"
+        to="/walking"
         style={{ display: "flex", justifyContent: "center" }}
       >
         <img

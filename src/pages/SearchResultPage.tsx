@@ -114,6 +114,7 @@ export default function SearchResultPage() {
       <Link to="/">
         <img src="/footerMap.png" alt="footerMap" />
       </Link>
+      <div></div>
     </div>
   );
 }

@@ -13,6 +13,7 @@ import OrderCheckPage from "./pages/OrderCheckPage";
 import { useState, useEffect } from "react";
 import { formatBalance } from "./utils";
 import detectEthereumProvider from "@metamask/detect-provider";
+import { WalkingPage } from "./pages/WalkingPage";
 
 export const pageList = [
   {
@@ -55,6 +56,12 @@ export const pageList = [
     name: "NFT Shoes Store",
     path: "shoe_store",
     components: <ShoeStorePage />,
+    src: "",
+  },
+  {
+    name: "Walking",
+    path: "walking",
+    components: <WalkingPage />,
     src: "",
   },
 ];
