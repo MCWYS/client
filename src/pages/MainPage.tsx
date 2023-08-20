@@ -48,7 +48,7 @@ export default function MainPage() {
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
           />
-          <NavLink to={`/search/${keyword}`}>
+          <NavLink to={`/walking`}>
             <img src="/svg/search-sm.svg" style={{ margin: "5px" }} />
           </NavLink>
         </div>
@@ -70,22 +70,24 @@ export default function MainPage() {
                 gap: "10px",
               }}
             >
-              <div
-                style={{
-                  backgroundColor: "#D9D9D9",
-                  width: "80px",
-                  height: "80px",
-                  borderRadius: "14px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <img
-                  src={food.imageUrl}
-                  style={{ width: "54px", height: "54px" }}
-                />
-              </div>
+              <NavLink to="/order_check">
+                <div
+                  style={{
+                    backgroundColor: "#D9D9D9",
+                    width: "80px",
+                    height: "80px",
+                    borderRadius: "14px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <img
+                    src={food.imageUrl}
+                    style={{ width: "54px", height: "54px" }}
+                  />
+                </div>
+              </NavLink>
               <h2 style={{}}>{food.name}</h2>
             </div>
           ))}
