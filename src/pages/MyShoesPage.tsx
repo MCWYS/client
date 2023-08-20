@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ethers, BigNumberish } from "ethers";
 import { ShoesNFTAddress, ShoesNFTABI } from "../contract/contract";
 import { myData } from "../App";
+import { TEXT_COLOR } from "../styled/main.styled";
 
 export const MyShoesPageWrapper = styled.div`
   display: flex;
@@ -38,6 +39,7 @@ const EquipShoes = styled.div`
 `;
 
 const EquipShoesImageBox = styled.div`
+  position: relative;
   margin-top: 14px;
   margin-bottom: 14px;
   background-color: #71717a;
@@ -241,6 +243,17 @@ export function MyShoesPage() {
             <EquipShoes>
               <p>{name}</p>
               <EquipShoesImageBox>
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "5px",
+                    left: "10px",
+                    fontSize: "16px",
+                    color: TEXT_COLOR,
+                  }}
+                >
+                  Equiped
+                </div>
                 <EquipShoesImage
                   src={`/svg/shoes/${shoes[0].name}.png`}
                 ></EquipShoesImage>
